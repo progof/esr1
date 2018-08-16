@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elspero
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: elspero
+  template:
+    metadata:
+      labels:
+        app: elspero
+        version: v0.15
+    spec:
+      containers:
+      - name: elspero
+        image: toolboc/elspero
+        ports:
+        - containerPort: 7475
+          name: elspero
+          protocol: TCP
